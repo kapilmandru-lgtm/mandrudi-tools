@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://tools.mandrudi.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://tools.mandrudi.com/automatisierungs-rechner/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/co2-logistik-rechner/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/digitalisierungsgrad-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/durchlaufzeit-analyzer/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/ewm-tm-eignungs-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/ki-potenzial-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/ki-reifegrad-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/ki-roi-rechner/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/lager-kpi-rechner/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/oee-rechner/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/projekt-konfigurator/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/prozess-automatisierung-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/reifegrad-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/roi-rechner/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/s4hana-readiness-check/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://tools.mandrudi.com/sicherheitsbestand-rechner/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>
