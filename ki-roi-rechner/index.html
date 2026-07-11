@@ -168,7 +168,14 @@
   input[type=range]::-webkit-slider-thumb:hover{transform:none}
   .rbar .fl{transition:none!important}
 }
-</style>
+
+    /* == Direkteingabe: Zahlenfeld neben Slider (added 2026-07-11) == */
+    .rangewrap{display:flex;align-items:center;gap:12px;margin-top:2px}
+    .rangewrap>input[type="range"]{flex:1 1 auto;min-width:0;margin:0}
+    .numfield{flex:0 0 auto;width:112px;text-align:right;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font-family:var(--f-mono,inherit);font-size:15px;line-height:1.2;font-variant-numeric:tabular-nums;-moz-appearance:textfield}
+    .numfield:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-tint)}
+    @media(max-width:520px){.numfield{width:96px;font-size:14px}}
+    </style>
 </head>
 <body>
 
@@ -339,6 +346,37 @@
     paintTrack(el[i]);
   });
   calc();
+})();
+</script>
+
+<script>
+/* == Direkteingabe: Zahlenfeld neben Slider (added 2026-07-11) == */
+(function(){
+  var ranges = document.querySelectorAll('input[type="range"]');
+  Array.prototype.forEach.call(ranges, function(r){
+    if(r.dataset.nf) return; r.dataset.nf='1';
+    if(parseFloat(r.step) > 1) r.step = '1';           /* feiner Step: getippte Werte werden nicht grob gerundet */
+    var wrap = document.createElement('div'); wrap.className='rangewrap';
+    r.parentNode.insertBefore(wrap, r); wrap.appendChild(r);
+    var num = document.createElement('input');
+    num.type='number'; num.className='numfield'; num.setAttribute('inputmode','decimal');
+    num.min=r.min; num.max=r.max; num.step=r.step||'1'; num.value=r.value;
+    wrap.appendChild(num);
+    r.addEventListener('input', function(){ if(document.activeElement !== num) num.value = r.value; });
+    num.addEventListener('input', function(){
+      if(num.value==='' || num.value==='-') return;
+      var v = parseFloat(num.value); if(isNaN(v)) return;
+      r.value = v; r.dispatchEvent(new Event('input',{bubbles:true}));
+    });
+    function commit(){
+      var v = parseFloat(num.value);
+      if(isNaN(v)){ num.value = r.value; return; }
+      r.value = v; num.value = r.value;                /* auf tatsächlich verwendeten Wert (geklemmt) setzen */
+      r.dispatchEvent(new Event('input',{bubbles:true}));
+    }
+    num.addEventListener('change', commit);
+    num.addEventListener('blur', commit);
+  });
 })();
 </script>
 </body>
