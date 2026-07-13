@@ -211,7 +211,8 @@ function setLang(l){if(!window.MDI18N[l])l="de";window.mdLang=l;document.documen
           <input type="email" id="lc-email" placeholder="name@company.com" autocomplete="email" aria-label="E-Mail">
           <button type="button" class="btn" id="lc-send" data-i18n="lc_send">Zusenden</button>
         </div>
-        <label class="lc-consent"><input type="checkbox" id="lc-consent"><span data-i18n="lc_consent">Ich willige ein, dass die Mandrudi KOAM SRL meine Angaben zur Kontaktaufnahme verarbeitet. Es gilt die <a href="https://www.mandrudi.com/datenschutzerklarung" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a>.</span></label>
+            <input type="text" id="lc-hp" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;pointer-events:none">
+  <label class="lc-consent"><input type="checkbox" id="lc-consent"><span data-i18n="lc_consent">Ich willige ein, dass die Mandrudi KOAM SRL meine Angaben zur Kontaktaufnahme verarbeitet. Es gilt die <a href="https://www.mandrudi.com/datenschutzerklarung" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a>.</span></label>
         <div class="lc-msg" id="lc-msg" role="status" aria-live="polite"></div>
       </div>
       <div class="cta">
@@ -332,7 +333,7 @@ function setLang(l){if(!window.MDI18N[l])l="de";window.mdLang=l;document.documen
     var msg=document.getElementById("lc-msg"); msg.className="lc-msg";
     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){msg.textContent=d.lc_err_email;msg.className="lc-msg err";return;}
     if(!ok){msg.textContent=d.lc_err_consent;msg.className="lc-msg err";return;}
-    var payload={email:email, tool:"Durchlaufzeit-Analyzer", seite:location.href};
+    var hp=(document.getElementById("lc-hp")||{}).value; if(hp){msg.textContent=d.lc_ok;msg.className="lc-msg ok";return;} var payload={email:email, tool:"Durchlaufzeit-Analyzer", seite:location.href};
     send.disabled=true; msg.textContent=d.lc_sending; msg.className="lc-msg";
     fetch(EP,{method:"POST",headers:{"Accept":"application/json","Content-Type":"application/json"},body:JSON.stringify(payload)})
       .then(function(r){if(!r.ok)throw 0; msg.textContent=d.lc_ok; msg.className="lc-msg ok";})
